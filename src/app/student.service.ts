@@ -8,8 +8,10 @@ import { Observable } from 'rxjs';
 
 export class StudentService {
 
-  //private baseUrl = 'http://localhost:8083/employees/';
-  private baseUrl = 'http://ec2-13-127-69-46.ap-south-1.compute.amazonaws.com:8084/employees/';
+   private baseUrlTemp = 'https://anton-flask.herokuapp.com/';
+    //  private baseUrl = 'http://localhost:8084/employees/';
+     // Check Me.  
+  private baseUrl = 'http://antonboot-env.eba-gi7ikd7y.ap-south-1.elasticbeanstalk.com/employees/';
 
   constructor(private http:HttpClient) { }
 
@@ -32,5 +34,14 @@ export class StudentService {
   updateStudent(id: number, value: any): Observable<Object> {
     return this.http.post(`${this.baseUrl} + 'update-student' + /${id}`, value);
   }
+
+  getStudentFromFlask(): Observable<any> {
+    return this.http.get(`${this.baseUrlTemp}`+'getUser');
+  }
+
+  getItemFromAmazon(item : any): Observable<any> {
+    return this.http.get(`${this.baseUrl}`+'item/' + item);
+  }
+
   
 }                                           

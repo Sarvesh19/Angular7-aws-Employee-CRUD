@@ -7,16 +7,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PartnerlistComponent } from './partnerlist/partnerlist.component';
 import {DataTablesModule} from 'angular-datatables';
-import { StudentListComponent } from './student-list/student-list.component';
+import { OutingpandaLandingComponent } from './outingpanda-landing/outingpanda-landing.component';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { SearchItemComponent } from './search-item/search-item.component';
+import { BlockUIModule } from 'ng-block-ui';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgbdDatepickerRangePopup } from './custom-directive/datepicker-range/datepicker-range.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+
+//import { MaterialModule, MatNativeDateModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     PartnerlistComponent,
-    StudentListComponent,
+    OutingpandaLandingComponent,
     AddStudentComponent,
+    NgbdDatepickerRangePopup, 
+    SearchItemComponent
   ],
   imports: [
     BrowserModule,
@@ -24,8 +37,17 @@ import { AddStudentComponent } from './add-student/add-student.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    NgbModule,
+    MatDatepickerModule,        // <----- import(must)
+    MatNativeDateModule,
+    GooglePlaceModule,        // <----- import for date formating(optional)
+//MatMomentDateModule,
+    Ng4LoadingSpinnerModule.forRoot()
+
   ],
+
+  exports: [NgbdDatepickerRangePopup],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,61 @@
+
+
+  <router-outlet></router-outlet>
+<div style ="  visibility: collapse;
+">
+Landing page 2 route
+
+
+</div>
+
+
+<div style="margin-top: 18%;
+    margin-left: 20%;">
+    <div>
+
+<img style="margin-left: 11%;" src="{{imageSrc}}">
+      
+<form class="form-inline">
+
+<div>
+<input style ="font-size: 20px;" name="city">
+</div>
+
+
+  <div class="form-group" style ="margin-left: 1%;">
+    <div class="input-group">
+      <input class="form-control" placeholder="dd-mm-yyyy"
+             name="dp1" [(ngModel)]="model1" ngbDatepicker #d1="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+
+<div class="form-group" style ="margin-left: 1%;">
+    <div class="input-group">
+      <input class="form-control" placeholder="dd-mm-yyyy"
+             name="dp2" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+
+
+</form>
+
+
+
+
+
+        <!-- <ngbd-datepicker-range-popup></ngbd-datepicker-range-popup> -->
+    </div>
+    <div style="margin-top: -3.4%;
+    margin-left: 59%;">
+        <a routerLink="search-item" class="nav-link" class="btn btn-primary active" role="button" >Search</a>
+    </div>
+
+</div>

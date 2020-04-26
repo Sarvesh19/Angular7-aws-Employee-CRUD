@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import {FormControl,FormGroup,Validators} from '@angular/forms';
 import { Student } from '../student';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-add-student',
   templateUrl: './add-student.component.html',
@@ -9,13 +12,28 @@ import { Student } from '../student';
 })
 export class AddStudentComponent implements OnInit {
 
-  constructor(private studentservice:StudentService) { }
+  constructor(private studentservice:StudentService, private router : Router) { }
 
   student : Student=new Student();
   submitted = false;
+  dataTemp : any;
 
   ngOnInit() {
     this.submitted=false;
+
+    this.studentservice.getStudentFromFlask()
+      .subscribe(data => {
+        console.log(data)
+        this.dataTemp = data;
+      }, error => console.log(error));
+
+
+  }
+
+
+  public backToLandingPage (item : any) :any{
+  this.router.navigate(['']);
+
   }
 
   studentsaveform=new FormGroup({

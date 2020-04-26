@@ -1,0 +1,61 @@
+<div>
+<div>
+  <button style ="     background: floralwhite;
+    border: none;
+    margin-top: 1%;
+    font-size: 18px;"(click)="backToLandingPage()" >< Back To OutingPanda</button>
+</div>
+
+<div style='margin-top: 50px;
+    margin-bottom: 20px;'>
+
+	<span style='font-size: x-large;'>Enter Search item to Get Amazon Recommendation :</span> 
+	    <input [(ngModel)]="name" #ctrl="ngModel" required>
+		<button class="btn btn-success" (click)="onClickMe(name)">Search</button>
+
+
+
+
+</div>
+
+<div *ngIf="!flag" class="loader"></div>
+
+
+<!-- <div *ngIf = "flag" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div> -->
+
+
+<div class="panel panel-default">
+  <section class="hero">
+<!-- <iframe src="https://ghbtns.com/github-btn.html?user=kuuurt13&repo=ng-block-ui&type=star&size=large" frameborder="0" scrolling="0"
+		 width="75px" height="30px"></iframe> -->
+  </section>
+  <div class="panel-body">
+      <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"  >
+          <thead class="thead-light">
+              <tr>
+                <th>Item Name</th>
+                  <th>Rating</th>
+                  <th>Availibility</th>
+                
+                  
+              </tr>
+          </thead>
+          <tbody>
+               <tr *ngFor="let item of listItem ">
+                <td>{{item.itemName}}</td>
+                  <td>{{item.rating}}</td>
+                  <td>{{item.availibility}}</td>
+                  
+                </tr> 
+          </tbody><br>
+      </table>
+  </div>
+</div> 
+</div>
+<!-- [timeout]="4000" -->
+<ng4-loading-spinner   [template]="template" [loadingText]="'Please wait...'" [zIndex]="9999" > </ng4-loading-spinner>

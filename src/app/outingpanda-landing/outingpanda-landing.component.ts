@@ -1,18 +1,87 @@
-import { Component, OnInit } from '@angular/core';
+/// <reference types="@types/googlemaps" />
+
+
+import { Component, OnInit,ViewChild, EventEmitter, Output, AfterViewInit, Input  } from '@angular/core';
 import { StudentService } from '../student.service';
 import { Student } from '../student';
 import { Observable,Subject } from "rxjs";
 
 import {FormControl,FormGroup,Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+
+
+//import { } from 'googlemaps';
+
 
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.css']
+  selector: 'outingpanda-landing',
+  templateUrl: './outingpanda-landing.component.html',
+  styleUrls: ['./outingpanda-landing.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class OutingpandaLandingComponent implements OnInit,AfterViewInit {
+//@ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
- constructor(private studentservice:StudentService) { }
+imageSrc = 'assets/pandalogo.png' ;
+imageAlt = 'pandalogo';
+
+
+private formatedAddress : any ='';
+
+options = {
+
+
+
+}
+
+
+  // @Input() adressType: string;
+  //   @Output() setAddress: EventEmitter<any> = new EventEmitter();
+  //   @ViewChild('addresstext') addresstext: any;
+
+  //   autocompleteInput: string;
+  //   queryWait: boolean;
+
+
+ constructor(private studentservice:StudentService, private router: Router) { }
+
+ ngAfterViewInit() {
+        //this.getPlaceAutocomplete();
+    }
+        public handleAddressChange(address: any) {
+
+          this.formatedAddress = address.formatted_address;
+
+        }
+
+
+        public goToSearchPage (item : any) :any{
+  this.router.navigate(['/search-item']);
+
+  }
+
+
+
+
+
+// private getPlaceAutocomplete() {
+//         const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement,
+//             {
+//                 componentRestrictions: { country: 'US' },
+//                 types: [this.adressType]  // 'establishment' / 'address' / 'geocode'
+//             });
+//         google.maps.event.addListener(autocomplete, 'place_changed', () => {
+//             const place = autocomplete.getPlace();
+//             this.invokeEvent(place);
+//         });
+//     }
+
+//     invokeEvent(place: Object) {
+//         this.setAddress.emit(place);
+//     }
+
+
+
+
 
   studentsArray: any[] = [];
   dtOptions: DataTables.Settings = {};
